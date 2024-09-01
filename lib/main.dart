@@ -4,9 +4,6 @@ import 'package:flutter_doctors_community_app/doc_app.dart';
 
 
 void main() {
-  
-
-  
   runApp(DocdocApp(
     appRouter: AppRouter(),
   ));
