@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_doctors_community_app/core/helpers/extensions.dart';
 import 'package:flutter_doctors_community_app/core/helpers/spacing.dart';
+import 'package:flutter_doctors_community_app/core/routing/routes.dart';
 import 'package:flutter_doctors_community_app/core/theming/colors.dart';
 import 'package:flutter_doctors_community_app/core/theming/styles.dart';
 import 'package:flutter_doctors_community_app/core/widgets/app_custom_text_form_field.dart';
@@ -91,10 +93,15 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                             ),
                           ],
                         ),
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyles.font12GrayRegular
-                              .copyWith(color: ColorManager.mainBlue),
+                        GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.forgotScreen);
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyles.font12GrayRegular
+                                .copyWith(color: ColorManager.mainBlue),
+                          ),
                         ),
                       ],
                     ),
