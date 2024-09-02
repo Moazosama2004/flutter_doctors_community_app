@@ -20,7 +20,7 @@ class TermsAndConditions extends StatelessWidget {
           TextSpan(
             text: ' Terms & Conditions ',
             style: TextStyles.font13GrayRegular.copyWith(
-              
+             
               color: Colors.black.withOpacity(0.7),
               fontWeight: FontWeight.bold,
             ),
