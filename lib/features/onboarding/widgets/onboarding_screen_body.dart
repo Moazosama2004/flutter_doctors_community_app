@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_doctors_community_app/core/helpers/extensions.dart';
+import 'package:flutter_doctors_community_app/core/routing/routes.dart';
 import 'package:flutter_doctors_community_app/core/theming/styles.dart';
+import 'package:flutter_doctors_community_app/core/widgets/app_cutom_text_button.dart';
 import 'package:flutter_doctors_community_app/features/onboarding/widgets/doctor_images_and_text.dart';
-import 'package:flutter_doctors_community_app/features/onboarding/widgets/get_started_button.dart';
 import 'package:flutter_doctors_community_app/features/onboarding/widgets/onboarding_custom_app_bar.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +37,12 @@ class OnBoardingScreenBody extends StatelessWidget {
                     SizedBox(
                       height: 32.h,
                     ),
-                    const GetStartedButton(),
+                    CustomTextButton(
+                      text: 'Get Started',
+                      onPressed: () {
+                        context.pushNamed(Routes.loginScreen);
+                      },
+                    ),
                   ],
                 ),
               ),

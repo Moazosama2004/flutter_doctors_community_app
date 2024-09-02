@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_doctors_community_app/features/login/presentation/widgets/login_screen_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Screen'),
-      ),
-      body: const Center(
-        child: Text('Login Screen'),
-      ),
+    return const Scaffold(
+      body: LoginScreenBody(),
     );
   }
 }
