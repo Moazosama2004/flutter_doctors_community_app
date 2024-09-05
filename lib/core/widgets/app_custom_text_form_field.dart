@@ -12,8 +12,12 @@ class CustomTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.suffixIcon,
     this.obscureText = false,
+    this.controller,
+    required this.validator,
   });
 
+  final String? Function(String?) validator;
+  final TextEditingController? controller;
   final String hintText;
   final TextStyle? hintStyle;
   final double? borderRadius;
@@ -24,6 +28,10 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
+      validator: (value) {
+        return validator(value);
+      },
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.h),
         hintText: hintText,
@@ -32,6 +40,14 @@ class CustomTextFormField extends StatelessWidget {
                 .copyWith(color: ColorManager.lighterGray),
         filled: true,
         fillColor: backgroundColor ?? ColorManager.lightGray,
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.red, width: 1.3),
+          borderRadius: BorderRadius.circular(borderRadius ?? 16),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.red, width: 1.3),
+          borderRadius: BorderRadius.circular(borderRadius ?? 16),
+        ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: ColorManager.lighterGray,
@@ -48,6 +64,7 @@ class CustomTextFormField extends StatelessWidget {
         isDense: true,
       ),
       obscureText: obscureText,
+      controller: controller,
     );
   }
 }
