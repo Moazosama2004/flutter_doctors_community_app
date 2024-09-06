@@ -35,7 +35,12 @@ class ForgotPasswordScreenBody extends StatelessWidget {
               style: TextStyles.font14GrayRegular.copyWith(height: 1.5.h),
             ),
             verticalSpacing(height: 36),
-            const CustomTextFormField(
+            CustomTextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter a valid password';
+                }
+              },
               hintText: 'Email or Phone Number',
             ),
             verticalSpacing(
