@@ -13,7 +13,7 @@ import 'package:flutter_doctors_community_app/core/widgets/app_custom_text_form_
 import 'package:flutter_doctors_community_app/core/widgets/app_cutom_text_button.dart';
 import 'package:flutter_doctors_community_app/features/login/data/models/login_request_body_model.dart';
 import 'package:flutter_doctors_community_app/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:flutter_doctors_community_app/features/login/presentation/widgets/already_have_an_account_widget.dart';
+import 'package:flutter_doctors_community_app/features/login/presentation/widgets/dont_have_account_text.dart';
 import 'package:flutter_doctors_community_app/features/login/presentation/widgets/email_and_password.dart';
 import 'package:flutter_doctors_community_app/features/login/presentation/widgets/login_bloc_listener.dart';
 import 'package:flutter_doctors_community_app/features/login/presentation/widgets/terms_and_conditions.dart';
@@ -47,12 +47,12 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                 style: TextStyles.font24BlueBold,
               ),
               verticalSpacing(height: 8),
-              Text(
+               Text(
                 'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
                 style: TextStyles.font14GrayRegular.copyWith(height: 1.5.h),
               ),
               verticalSpacing(height: 36),
-              EmailAndPassword(),
+              const EmailAndPassword(),
               verticalSpacing(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,11 +101,11 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                   validateThenDoLogin(context);
                 },
               ),
-              verticalSpacing(height: 170),
-              Align(alignment: Alignment.center, child: TermsAndConditions()),
+              verticalSpacing(height: 24),
+              const Align(alignment: Alignment.center, child: TermsAndConditions()),
               verticalSpacing(height: 16),
-              Align(alignment: Alignment.center, child: AlreadyHaveAccount()),
-              LoginBlocListener(),
+              const Align(alignment: Alignment.center, child: DontHaveAccountText()),
+              const LoginBlocListener(),
             ],
           ),
         ),
@@ -115,11 +115,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
 
   void validateThenDoLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(
-            LoginRequestBody(
-                email: context.read<LoginCubit>().emailController.text,
-                password: context.read<LoginCubit>().passwordController.text),
-          );
+      context.read<LoginCubit>().emitLoginStates();
     }
   }
 }

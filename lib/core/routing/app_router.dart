@@ -7,6 +7,8 @@ import 'package:flutter_doctors_community_app/features/home/presentation/home_sc
 import 'package:flutter_doctors_community_app/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:flutter_doctors_community_app/features/login/presentation/login_screen.dart';
 import 'package:flutter_doctors_community_app/features/onboarding/onboarding_screen.dart';
+import 'package:flutter_doctors_community_app/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:flutter_doctors_community_app/features/signup/presentation/signup_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -16,6 +18,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<SignupCubit>(),
+                  child: const SignupScreen(),
+                ));
       case Routes.loginScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
